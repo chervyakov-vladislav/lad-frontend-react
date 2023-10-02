@@ -10,5 +10,4 @@ export default defineConfig({
     open: true,
   },
   resolve: { alias: { '@': path.resolve(__dirname, './src') } },
-  build: { sourcemap: true },
 });
