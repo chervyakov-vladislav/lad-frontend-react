@@ -1,0 +1,46 @@
+:root {
+  //font
+  --font-size: 16px;
+  --font-color: #111827;
+  --font-regular: "Mont";
+  --font-medium: "Mont";
+  --font-bold: "Mont";
+
+  //lad-root-vars
+  --contL: 143px;
+  --contR: 143px;
+  --contM: -91px;
+  --contLxs: 20px;
+  --contMxs: -20px;
+  --font: 'Inter', 'Arial', sans-serif;
+  --font_mont: 'Mont', 'Arial', sans-serif;
+  --font_anon: 'AnonymousPro', 'Arial', sans-serif;
+  --blue: #004BFF;
+  --blue_1: #CCDBFF;
+  --blue_2: #BBCFFF;
+  --blue_3: #6693FF;
+  --blue_4: #0041DD;
+  --darkblue_1: #002D99;
+  --darkblue_2: #002377;
+  --darkblue_3: #001444;
+  --darkblue_4: #000F33;
+  --black: #000A19;
+  --black_text: #485366;
+  --white: #FFFFFF;
+  --lightblue: #58D9EF;
+  --red: #FE4134;
+  --green: #8ADC2E;
+  --gray: #798497;
+  --gray_2: #8D97A5;
+  --darkgray: #353A43;
+  --lightgray_1: #DFE3EA;
+  --lightgray_2: #BBC3D0;
+  --yellow: #FEEB49;
+  --pink: #F92672;
+  --purple: #B65AFF;
+
+  //z-index
+  --z-index-10minus: -10;
+  --z-index-10: 10;
+  --z-index-20: 20;
+}
