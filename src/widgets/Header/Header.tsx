@@ -1,15 +1,19 @@
 import React from 'react';
 import style from './style.module.scss';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
+
+import { SearchBar } from '@/features';
 
 export const Header = () => {
   return (
-    <div className={style.header}>
-      <Link className={style.header} to={'/'}>
-        Home
-      </Link>
-      <Link to={'/films'}>Films</Link>
-      <Link to={'/somepage'}>SomePage</Link>
-    </div>
+    <header className={style.header}>
+      <div className={classNames(style['header__container'], 'container')}>
+        <Link className={style.header__logo} to={'/'}>
+          <img src="https://lad24.ru/themes/lad/assets/i/logo30.svg" alt="logo" />
+        </Link>
+        <SearchBar />
+      </div>
+    </header>
   );
 };

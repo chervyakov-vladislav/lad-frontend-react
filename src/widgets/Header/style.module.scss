@@ -1,3 +1,15 @@
 .header {
-  color: red;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  background: #141414;
+  color: var(--black);
+
+  &__container {
+    display: flex;
+  }
+
+  &__logo {
+
+  }
 }

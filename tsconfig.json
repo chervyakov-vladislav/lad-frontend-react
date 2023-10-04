@@ -3,7 +3,7 @@
     "target": "esnext",
     "lib": ["dom", "esnext", "dom.iterable"],
     "jsx": "react-jsx",
-    "types": ["node"],
+    "types": ["node", "vite/client"],
     "module": "esnext",
     "moduleResolution": "node",
     "noImplicitAny": true,
