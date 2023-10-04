@@ -1,6 +1,6 @@
 import React from 'react';
 
-import IconSearch from '@/shared/assets/IconSearch.svg';
+import { IconSearch } from '@/shared/assets';
 
 export const SearchBar = () => {
   return (
