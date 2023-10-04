@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { SearchBar } from '@/features';
+import { LiginButton } from '@/entities';
 
 export const Header = () => {
   return (
@@ -12,7 +13,10 @@ export const Header = () => {
         <Link className={style.header__logo} to={'/'}>
           <img src="https://lad24.ru/themes/lad/assets/i/logo30.svg" alt="logo" />
         </Link>
-        <SearchBar />
+        <div className={style.header__controls}>
+          <SearchBar />
+          <LiginButton />
+        </div>
       </div>
     </header>
   );

@@ -7,9 +7,18 @@
 
   &__container {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   &__logo {
 
+  }
+
+  &__controls {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 }
