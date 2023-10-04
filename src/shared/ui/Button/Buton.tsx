@@ -1,6 +1,6 @@
 import { ComponentProps, ElementType, ReactNode } from 'react';
 
-import style from './button.module.scss';
+import style from './style.module.scss';
 import classNames from 'classnames';
 
 type ButtonOwnProps<E extends ElementType = ElementType> = {

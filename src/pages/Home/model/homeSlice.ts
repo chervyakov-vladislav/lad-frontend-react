@@ -1,5 +1,4 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { RootState } from '@/app/providers/storeProvider';
 
 const initialState = {
   count: 0,
@@ -14,7 +13,5 @@ export const homeSlice = createSlice({
     },
   },
 });
-
-export const selectEditor = (state: RootState) => state.home;
 
 export default homeSlice.reducer;

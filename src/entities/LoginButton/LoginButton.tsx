@@ -1,12 +1,11 @@
 import style from './style.module.scss';
 
 import { IconLogin } from '@/shared/assets';
-import { Button } from '@/shared/ui';
 
 export const LoginButton = () => {
   return (
-    <Button>
+    <button className={style.login}>
       <IconLogin className={style.login__icon} />
-    </Button>
+    </button>
   );
 };
