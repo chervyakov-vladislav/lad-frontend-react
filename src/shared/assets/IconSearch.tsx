@@ -1,6 +1,10 @@
-export const IconSearch = () => {
+type IconProps = {
+  className?: string;
+}
+
+export const IconSearch: React.FC<IconProps> = ({ className }) => {
   return (
-    <svg className="search-icon" fill="currentColor" width="18" height="18" viewBox="0 0 18 18"
+    <svg className={className} fill="currentColor" width="1em" height="1em" viewBox="0 0 18 18"
       xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0261 10.626L16.0001 14.6L14.6001 16L10.6261 12.026C9.49661 12.8061 8.11628 13.1356 6.75625 12.9498C5.39623
    12.7641 4.15481 12.0765 3.27588 11.0222C2.39695 9.96782 1.94404 8.62292 2.00612 7.25167C2.0682 5.88043 2.64079 4.58195 3.61141 3.61134C4.58202 2.64073 5.88049
