@@ -6,7 +6,7 @@ import { useSearchBar } from './lib/useSearchBar';
 import { SuggestionList } from './ui';
 
 export const SearchBar = () => {
-  const { searchValue, handleInput, isLoading } = useSearchBar();
+  const { searchValue, handleInput, isLoading, handleSearch } = useSearchBar();
 
   return (
     <form className={style.searchbar}>
@@ -20,7 +20,7 @@ export const SearchBar = () => {
       {isLoading ? (
         <Spinner className={style.searchbar__loader} />
       ) : (
-        <IconSearch className={style.searchbar__icon} />
+        <IconSearch className={style.searchbar__icon} onClick={handleSearch} />
       )}
       <SuggestionList />
     </form>

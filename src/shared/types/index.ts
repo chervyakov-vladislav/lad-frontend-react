@@ -1,3 +1,11 @@
+type JSONPrimitive = number | string | boolean | null;
+type JSONObject = {
+  [k: string]: JSONAny;
+};
+type JSONArray = JSONAny[];
+
+export type JSONAny = JSONPrimitive | JSONObject | JSONArray;
+
 export interface KeyWordSearchInterface {
   films: ITopFilm[];
   keyword: string;

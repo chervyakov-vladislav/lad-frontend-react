@@ -41,6 +41,7 @@
     
     &::-webkit-input-placeholder {
       color: var(--blue_1);
+      transition: .3s;
     }
 
     &:focus {

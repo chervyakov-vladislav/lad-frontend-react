@@ -4,7 +4,7 @@ import { KeyWordSearchInterface } from '@/shared/types';
 
 interface IThunk {
   searchValue: string;
-  signal: AbortSignal;
+  signal?: AbortSignal;
 }
 
 export const fetchFilms = createAsyncThunk<KeyWordSearchInterface, IThunk>(
