@@ -1,5 +1,7 @@
-import React from 'react';
+// import { useSuggestionList } from './lib';
+import styles from './styles.module.scss';
 
 export const SuggestionList = () => {
-  return <div>SuggestionList</div>;
+  // const { isLoading, films } = useSuggestionList();
+  return <div className={styles.suggestions}>SuggestionList</div>;
 };

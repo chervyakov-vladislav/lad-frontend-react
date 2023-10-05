@@ -1,11 +1,12 @@
 import style from './style.module.scss';
 
 import { IconSearch } from '@/shared/assets';
-import { Input } from '@/shared/ui';
+import { Input, Spinner } from '@/shared/ui';
 import { useSearchBar } from './lib/useSearchBar';
+import { SuggestionList } from './ui';
 
 export const SearchBar = () => {
-  const { searchValue, handleInput } = useSearchBar();
+  const { searchValue, handleInput, isLoading } = useSearchBar();
 
   return (
     <form className={style.searchbar}>
@@ -16,7 +17,12 @@ export const SearchBar = () => {
         value={searchValue}
         onChange={handleInput}
       />
-      <IconSearch className={style.searchbar__icon} />
+      {isLoading ? (
+        <Spinner className={style.searchbar__loader} />
+      ) : (
+        <IconSearch className={style.searchbar__icon} />
+      )}
+      <SuggestionList />
     </form>
   );
 };

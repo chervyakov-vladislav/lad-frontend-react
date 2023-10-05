@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { useAppDispatch } from '@/app/providers/storeProvider';
+import { useAppDispatch, useAppSelector } from '@/app/providers/storeProvider';
 import { useDebounce } from '@/shared/lib';
 
 import { fetchFilms } from '../model/actionCreators';
@@ -10,7 +10,7 @@ export const useSearchBar = () => {
   const debouncedValue = useDebounce<string>(searchValue, 500);
 
   const dispatch = useAppDispatch();
-  // const { films } = useAppSelector((state) => state.searchbar);
+  const { isLoading } = useAppSelector((state) => state.searchbar);
 
   const handleInput = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -31,6 +31,7 @@ export const useSearchBar = () => {
   }, [dispatch, debouncedValue]);
 
   return {
+    isLoading,
     searchValue,
     handleInput,
   };

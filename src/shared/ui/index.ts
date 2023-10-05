@@ -4,3 +4,4 @@ export * from './Input';
 export * from './Button';
 export * from './Portal';
 export * from './Modal';
+export * from './Spinner';
