@@ -1,0 +1,90 @@
+.shared-modal {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	pointer-events: auto;
+	z-index: 10000;
+
+	&__overlay {
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.4);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    position: relative;
+    overflow-y: scroll;
+	}
+
+  &__grid {
+    position: fixed;
+    left: 50%;
+    translate: -50%;
+    max-width: 420px;
+    width: 100%;
+    z-index: 10000;
+  }
+
+  &__top-indent {
+    height: calc(50vh - 220px);
+  }
+
+  &__bottom-indent {
+    height: 4vh;
+  }
+
+	&__content {
+    border-radius: 8px;
+    margin: 0 2%;
+    background: #fff;
+    animation: zoomInForModal .2s ease;
+    transition: 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+	}
+
+  &__content-container {
+    padding: 12px 15px;
+  }
+
+	&__opened {
+		pointer-events: auto;
+		z-index: 10000;
+	}
+}
+
+.body-modal {
+	overflow: hidden;
+	width: 100%;
+  height: 100%;
+	padding-right: 17px;
+}
+.body-modal_mobile {
+	overflow: hidden;
+	width: 100%;
+  height: 100%;
+	padding-right: 0px;
+}
+
+@keyframes zoomInForModal {
+  0% {
+    opacity: 0;
+    left: 50%;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes overlayFadeIn {
+	0% {
+		background-color: rgba(0, 0, 0, 0);
+	}
+	100% {
+		background-color: rgba(0, 0, 0, 0.4);
+	}
+}

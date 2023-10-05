@@ -7,7 +7,13 @@ export const useSearchBar = () => {
   const { films } = useAppSelector((state) => state.searchbar);
 
   useEffect(() => {
-    dispatch(fetchFilms());
+    const abortController = new AbortController();
+    const fetchParams = {
+      signal: abortController.signal,
+    };
+
+    dispatch(fetchFilms(fetchParams));
+    return () => abortController.abort();
   }, [dispatch]);
 
   useEffect(() => {
