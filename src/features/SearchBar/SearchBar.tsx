@@ -6,7 +6,7 @@ import { useSearchBar } from './lib/useSearchBar';
 import { SuggestionList } from './ui';
 
 export const SearchBar = () => {
-  const { searchValue, handleInput, isLoading, handleSearch } = useSearchBar();
+  const { searchValue, handleInput, isLoading, handleSearch, films } = useSearchBar();
 
   return (
     <form className={style.searchbar}>
@@ -22,7 +22,7 @@ export const SearchBar = () => {
       ) : (
         <IconSearch className={style.searchbar__icon} onClick={handleSearch} />
       )}
-      <SuggestionList />
+      {films && <SuggestionList />}
     </form>
   );
 };

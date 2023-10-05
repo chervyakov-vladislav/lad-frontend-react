@@ -17,7 +17,13 @@ const initialState: IUsers = {
 export const searchbarSlice = createSlice({
   name: 'headerFilms',
   initialState,
-  reducers: {},
+  reducers: {
+    resetSuggestionFilms(state) {
+      state.films = null;
+      state.isLoading = false;
+      state.error = '';
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchFilms.fulfilled, (state, action) => {
       state.films = action.payload;
@@ -34,4 +40,5 @@ export const searchbarSlice = createSlice({
   },
 });
 
+export const { resetSuggestionFilms } = searchbarSlice.actions;
 export default searchbarSlice.reducer;

@@ -1,3 +1,68 @@
 .suggestions {
   position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  width: 100%;
+  border-radius: 8px;
+  background-color: #fff;
+  z-index: 10;
+  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+
+  &__card {
+    padding: 8px 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: .3s;
+    gap: 10px;
+
+    &:hover {
+      background: var(--blue_1);
+    }
+
+    &:first-child {
+      border-radius: 8px 8px 0 0;
+    }
+
+    &:last-child {
+      border-radius: 0 0 8px 8px ;
+    }
+  }
+
+  &__image {
+    width: 32px;
+    height: 48px;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  &__header {
+    font-weight: 600;
+    font-family: var(--mont);
+    font-size: 15px;
+  }
+
+  &__rating {
+    margin-right: 10px;
+    font-weight: 800;
+    font-family: var(--mont);
+  }
+
+  &__green {
+    margin-right: 10px;
+    font-weight: 800;
+    font-family: var(--mont);
+    color: var(--green);
+  }
+
+  &__type {
+    font-size: 14px;
+  }
 }

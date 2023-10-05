@@ -10,8 +10,12 @@ export const Header = () => {
   return (
     <header className={style.header}>
       <div className={classNames(style['header__container'], 'container')}>
-        <Link className={style.header__logo} to={'/'}>
-          <img src='https://lad24.ru/themes/lad/assets/i/logo30.svg' alt='logo' />
+        <Link to={'/'}>
+          <img
+            className={style.header__image}
+            src='https://lad24.ru/themes/lad/assets/i/logo30.svg'
+            alt='logo'
+          />
         </Link>
         <div className={style.header__controls}>
           <SearchBar />

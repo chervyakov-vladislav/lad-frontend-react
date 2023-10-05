@@ -11,7 +11,7 @@ export const useSearchBar = () => {
   const debouncedValue = useDebounce<string>(searchValue, 500);
 
   const dispatch = useAppDispatch();
-  const { isLoading } = useAppSelector((state) => state.searchbar);
+  const { isLoading, films } = useAppSelector((state) => state.searchbar);
 
   const handleInput = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -24,9 +24,11 @@ export const useSearchBar = () => {
       searchValue: debouncedValue,
       signal: abortController.signal,
     };
+
     if (debouncedValue.length) {
       dispatch(fetchFilms(fetchParams));
     }
+
     if (abortFuncs.current && debouncedValue.length) {
       abortFuncs.current.unshift(abortController.abort.bind(abortController));
     }
@@ -68,5 +70,6 @@ export const useSearchBar = () => {
     searchValue,
     handleInput,
     handleSearch,
+    films,
   };
 };

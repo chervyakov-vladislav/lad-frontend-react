@@ -1,10 +1,30 @@
-import { useAppSelector } from '@/app/providers/storeProvider';
+import { useRef } from 'react';
+
+import { useAppDispatch, useAppSelector } from '@/app/providers/storeProvider';
+import { useOnClickOutside } from '@/shared/lib';
+import { resetSuggestionFilms } from '@/features/SearchBar/model/searchbarSlice';
 
 export const useSuggestionList = () => {
-  const { films, isLoading } = useAppSelector((state) => state.searchbar);
+  const { films } = useAppSelector((state) => state.searchbar);
+  const dispatch = useAppDispatch();
+  const ref = useRef(null);
 
-  return {
-    films: films?.films.filter((_, index) => index < 5),
-    isLoading,
+  const handleClickOutside = () => {
+    dispatch(resetSuggestionFilms());
   };
+
+  useOnClickOutside(ref, handleClickOutside);
+
+  function getGenresString(value: { genre: string }[]) {
+    return value
+      .map((item, index) => {
+        if (index < 2) {
+          return item.genre;
+        }
+      })
+      .filter((item) => item?.length ?? 0 > 0)
+      .join(', ');
+  }
+
+  return { films: films?.films.filter((_, index) => index < 5), ref, getGenresString };
 };

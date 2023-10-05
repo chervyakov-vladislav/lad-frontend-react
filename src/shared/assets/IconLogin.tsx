@@ -1,11 +1,10 @@
-type IconProps = {
-  className?: string;
-};
+import { SVGProps } from 'react';
 
-export const IconLogin: React.FC<IconProps> = ({ className }) => {
+export const IconLogin: React.FC<SVGProps<SVGSVGElement>> = ({ className, ...props }) => {
   return (
     <svg
       className={className}
+      {...props}
       fill='currentColor'
       width='1em'
       height='1em'

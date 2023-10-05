@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useRef } from 'react';
 import classNames from 'classnames';
 
 import { Portal } from '../Portal';
@@ -17,19 +17,24 @@ export const Modal: React.FC<ModalProps> = ({
   headerTitle = '',
   maxWidth = '420px',
 }) => {
+  const overlayRef = useRef(null);
   if (!children) return null;
+
+  const handleExit = (event: React.MouseEvent<HTMLElement>) => {
+    if (event.target === overlayRef.current) {
+      handleClose();
+    }
+  };
 
   return (
     <Portal>
       <div className={classNames(style['shared-modal'], style['shared-modal__opened'])}>
-        <div className={style['shared-modal__overlay']} id='overlay' onMouseDown={handleClose}>
+        <div className={style['shared-modal__overlay']} ref={overlayRef} onMouseDown={handleExit}>
           <div className={style['shared-modal__grid']} style={{ maxWidth }}>
-            <div className={style['shared-modal__top-indent']}></div>
             <div className={style['shared-modal__content']}>
               <ModalHeader handleClick={handleClose} text={headerTitle} />
               <div className={style['shared-modal__content-container']}>{children}</div>
             </div>
-            <div className={style['shared-modal__bottom-indent']}></div>
           </div>
         </div>
       </div>
