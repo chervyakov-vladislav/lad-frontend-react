@@ -9,11 +9,23 @@ export const useModal = () => {
     }
   }, []);
 
-  const openModal = useCallback((event: React.SyntheticEvent<HTMLElement, Event>) => {
-    event.preventDefault();
-    setShowModal(true);
-    document.addEventListener('keydown', handleEscape);
-  }, []);
+  const openModal = useCallback(
+    (event: React.SyntheticEvent<HTMLElement, Event>) => {
+      event.preventDefault();
+      setShowModal(true);
+      document.addEventListener('keydown', handleEscape);
+      if (
+        navigator.userAgent.match(/Android/i) ||
+        navigator.userAgent.match(/iPhone/i) ||
+        window.innerWidth <= 953
+      ) {
+        document.body.classList.add('body-modal__mobile');
+      } else {
+        document.body.classList.add('body-modal');
+      }
+    },
+    [handleEscape]
+  );
 
   const handleCloseModal = useCallback(() => {
     setShowModal(false);
@@ -21,7 +33,7 @@ export const useModal = () => {
 
   useEffect(() => {
     return () => document.removeEventListener('keydown', handleEscape);
-  }, []);
+  }, [handleEscape]);
 
   return {
     showModal,

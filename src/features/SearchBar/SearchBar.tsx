@@ -5,7 +5,7 @@ import { Input } from '@/shared/ui';
 import { useSearchBar } from './lib/useSearchBar';
 
 export const SearchBar = () => {
-  useSearchBar();
+  const { searchValue, handleInput } = useSearchBar();
 
   return (
     <form className={style.searchbar}>
@@ -13,6 +13,8 @@ export const SearchBar = () => {
         className={style.searchbar__input}
         type='text'
         placeholder='Фильмы, сериалы, персоны'
+        value={searchValue}
+        onChange={handleInput}
       />
       <IconSearch className={style.searchbar__icon} />
     </form>
