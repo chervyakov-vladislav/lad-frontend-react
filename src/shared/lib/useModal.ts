@@ -14,15 +14,6 @@ export const useModal = () => {
       event.preventDefault();
       setShowModal(true);
       document.addEventListener('keydown', handleEscape);
-      if (
-        navigator.userAgent.match(/Android/i) ||
-        navigator.userAgent.match(/iPhone/i) ||
-        window.innerWidth <= 953
-      ) {
-        document.body.classList.add('body-modal__mobile');
-      } else {
-        document.body.classList.add('body-modal');
-      }
     },
     [handleEscape]
   );

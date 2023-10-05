@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { useAppDispatch, useAppSelector } from '@/app/providers/storeProvider';
+import { useAppDispatch } from '@/app/providers/storeProvider';
 import { useDebounce } from '@/shared/lib';
 
 import { fetchFilms } from '../model/actionCreators';
@@ -10,7 +10,7 @@ export const useSearchBar = () => {
   const debouncedValue = useDebounce<string>(searchValue, 500);
 
   const dispatch = useAppDispatch();
-  const { films } = useAppSelector((state) => state.searchbar);
+  // const { films } = useAppSelector((state) => state.searchbar);
 
   const handleInput = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -24,12 +24,13 @@ export const useSearchBar = () => {
       signal: abortController.signal,
     };
 
-    dispatch(fetchFilms(fetchParams));
+    if (debouncedValue.length) {
+      dispatch(fetchFilms(fetchParams));
+    }
     return () => abortController.abort();
   }, [dispatch, debouncedValue]);
 
   return {
-    films,
     searchValue,
     handleInput,
   };
