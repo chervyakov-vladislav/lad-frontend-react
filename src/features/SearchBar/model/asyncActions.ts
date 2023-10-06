@@ -7,7 +7,7 @@ interface IThunk {
   signal?: AbortSignal;
 }
 
-export const fetchFilms = createAsyncThunk<KeyWordSearchInterface, IThunk>(
+export const fetchFilmsSearchbar = createAsyncThunk<KeyWordSearchInterface, IThunk>(
   'user/fetchAll',
   async ({ searchValue, signal }, thunkAPI) => {
     try {

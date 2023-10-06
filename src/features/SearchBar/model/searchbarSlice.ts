@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { KeyWordSearchInterface } from '@/shared/types';
-import { fetchFilms } from './actionCreators';
+import { fetchFilmsSearchbar } from './asyncActions';
 
 interface IUsers {
   films: KeyWordSearchInterface | null;
@@ -25,16 +25,16 @@ export const searchbarSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchFilms.fulfilled, (state, action) => {
+    builder.addCase(fetchFilmsSearchbar.fulfilled, (state, action) => {
       state.films = action.payload;
       state.error = '';
       state.isLoading = false;
     });
-    builder.addCase(fetchFilms.rejected, (state, action) => {
+    builder.addCase(fetchFilmsSearchbar.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload as string;
     });
-    builder.addCase(fetchFilms.pending, (state) => {
+    builder.addCase(fetchFilmsSearchbar.pending, (state) => {
       state.isLoading = true;
     });
   },

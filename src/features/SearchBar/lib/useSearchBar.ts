@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/app/providers/storeProvider';
 import { useDebounce } from '@/shared/lib';
 
-import { fetchFilms } from '../model/actionCreators';
+import { fetchFilmsSearchbar } from '../model/asyncActions';
 
 export const useSearchBar = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -26,7 +26,7 @@ export const useSearchBar = () => {
     };
 
     if (debouncedValue.length) {
-      dispatch(fetchFilms(fetchParams));
+      dispatch(fetchFilmsSearchbar(fetchParams));
     }
 
     if (abortFuncs.current && debouncedValue.length) {
@@ -49,7 +49,7 @@ export const useSearchBar = () => {
     };
 
     if (debouncedValue.length) {
-      dispatch(fetchFilms(fetchParams));
+      dispatch(fetchFilmsSearchbar(fetchParams));
     }
 
     if (abortFuncs.current && debouncedValue.length) {

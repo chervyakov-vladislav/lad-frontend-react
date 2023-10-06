@@ -36,3 +36,5 @@ export interface Countries {
 export interface Genres {
   genre: string;
 }
+
+export type ITopData = Omit<KeyWordSearchInterface, 'searchFilmsCountResult' | 'keyword'>;
