@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './style.module.scss';
 
+import { useAppDispatch, useAppSelector } from '@/app/providers/storeProvider';
 import { IconTopFilms } from '@/shared/assets';
 import { TopFilmCard } from '@/entities';
+import { QUERY_TOP_FILMS } from '@/pages';
+
+import { fetchTopFilms } from './model/asyncActions';
 
 interface ITopFilms {
   title: string;
-  query: string;
+  query: QUERY_TOP_FILMS;
 }
 
 export const TopFilms: React.FC<ITopFilms> = ({ title, query }) => {
-  console.log(query);
+  const dispatch = useAppDispatch();
+  const { films_best, films_top } = useAppSelector((state) => state.topFilms);
+
+  useEffect(() => {
+    dispatch(fetchTopFilms(query));
+  }, [dispatch, query]);
+
+  const data = query === QUERY_TOP_FILMS.BEST250 ? films_best : films_top;
 
   return (
     <article className={styles['top-films']}>
@@ -18,19 +29,17 @@ export const TopFilms: React.FC<ITopFilms> = ({ title, query }) => {
         <h2 className={styles['top-films__title']}>{title}</h2>
         <IconTopFilms className={styles['top-films__icon']} />
       </header>
-      <ul>
-        <li>
-          <TopFilmCard />
-        </li>
-        <li>
-          <TopFilmCard />
-        </li>
-        <li>
-          <TopFilmCard />
-        </li>
-        <li>
-          <TopFilmCard />
-        </li>
+
+      <ul className={styles['top-films__list']}>
+        {data.map((film, index) => {
+          if (index < 5) {
+            return (
+              <li key={film.filmId}>
+                <TopFilmCard {...film} />
+              </li>
+            );
+          }
+        })}
       </ul>
     </article>
   );

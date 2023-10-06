@@ -8,7 +8,7 @@ interface IThunk {
 }
 
 export const fetchFilmsSearchbar = createAsyncThunk<KeyWordSearchInterface, IThunk>(
-  'user/fetchAll',
+  'searchbar/fetchSearchbar',
   async ({ searchValue, signal }, thunkAPI) => {
     try {
       const page = '1';

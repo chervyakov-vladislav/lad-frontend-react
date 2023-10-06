@@ -34,7 +34,9 @@ export const SuggestionList = () => {
             </div>
           </li>
         ))}
-      {films?.length === 0 && <h3 className={styles.suggestions__card}>Ничего не найдено</h3>}
+      {films && films.length === 0 && (
+        <h3 className={styles.suggestions__card}>Ничего не найдено</h3>
+      )}
     </ul>
   );
 };

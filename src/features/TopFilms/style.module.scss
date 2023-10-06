@@ -15,4 +15,9 @@
       height: 18px;
       margin-top: 5px;
     }
+
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+    }
 }

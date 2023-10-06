@@ -1,21 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
+
+import { QUERY_TOP_FILMS } from '@/pages';
 import { ITopFilm } from '@/shared/types';
+
 import { fetchTopFilms } from './asyncActions';
 
 interface IUsers {
-  films: ITopFilm[] | null;
-  isLoading: boolean;
-  error: string;
+  films_best: ITopFilm[];
+  films_top: ITopFilm[];
 }
 
 const initialState: IUsers = {
-  films: null,
-  isLoading: false,
-  error: '',
+  films_best: [],
+  films_top: [],
 };
 
 export const topFilmsSlice = createSlice({
-  name: 'headerFilms',
+  name: 'topFilms',
   initialState,
   reducers: {
     // resetSuggestionFilms(state) {
@@ -25,17 +26,12 @@ export const topFilmsSlice = createSlice({
     // },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchTopFilms.fulfilled, (state, action) => {
-      state.films = action.payload.data;
-      state.error = '';
-      state.isLoading = false;
-    });
-    builder.addCase(fetchTopFilms.rejected, (state, action) => {
-      state.isLoading = false;
-      state.error = action.payload as string;
-    });
-    builder.addCase(fetchTopFilms.pending, (state) => {
-      state.isLoading = true;
+    builder.addCase(fetchTopFilms.fulfilled, (state, { payload: { data, query } }) => {
+      if (query === QUERY_TOP_FILMS.BEST250) {
+        state.films_best = data;
+      } else if (query === QUERY_TOP_FILMS.POPULAR100) {
+        state.films_top = data;
+      }
     });
   },
 });

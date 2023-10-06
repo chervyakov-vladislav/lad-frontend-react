@@ -15,7 +15,7 @@ const initialState: IUsers = {
 };
 
 export const searchbarSlice = createSlice({
-  name: 'headerFilms',
+  name: 'searchbar',
   initialState,
   reducers: {
     resetSuggestionFilms(state) {

@@ -3,7 +3,7 @@ import styles from './style.module.scss';
 
 import { TopFilms } from '@/features/TopFilms';
 
-enum QUERY {
+export enum QUERY_TOP_FILMS {
   POPULAR100 = 'TOP_100_POPULAR_FILMS',
   BEST250 = 'TOP_250_BEST_FILMS',
 }
@@ -15,8 +15,8 @@ enum TITLE {
 export const Home = () => {
   return (
     <div className={classNames('container', styles.home)}>
-      <TopFilms title={TITLE.POPULAR100} query={QUERY.POPULAR100} />
-      <TopFilms title={TITLE.BEST250} query={QUERY.BEST250} />
+      <TopFilms title={TITLE.POPULAR100} query={QUERY_TOP_FILMS.POPULAR100} />
+      <TopFilms title={TITLE.BEST250} query={QUERY_TOP_FILMS.BEST250} />
     </div>
   );
 };
