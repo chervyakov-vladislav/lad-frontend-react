@@ -4,7 +4,6 @@
   display: grid;
   grid-template-columns: auto auto 1fr auto;
   height: 150px;
-  // justify-content: space-between;
   padding: 13px 20px;
   transition: .3s;
   gap: 25px;
@@ -32,10 +31,12 @@
   &__desc {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
+    height: 100%;
+    padding: 10px
   }
 
   &__title {
-    
+    flex: 1;
   }
 }

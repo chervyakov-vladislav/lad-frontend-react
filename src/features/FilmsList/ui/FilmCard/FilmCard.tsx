@@ -4,6 +4,7 @@ import styles from './style.module.scss';
 import { ITopFilm } from '@/shared/types';
 
 import { getEngnameYearTotalTime, getRating, getTypeCountry } from '../../lib/formatData';
+import { useNavigate } from 'react-router-dom';
 
 export const FilmCard: React.FC<ITopFilm & { count: number }> = ({
   posterUrlPreview,
@@ -15,9 +16,16 @@ export const FilmCard: React.FC<ITopFilm & { count: number }> = ({
   type,
   countries,
   rating,
+  filmId,
 }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/films/${filmId}`);
+  };
+
   return (
-    <article className={styles.card}>
+    <article className={styles.card} onClick={handleClick}>
       <div className={styles['card__count']}>{count + 1}</div>
       <img className={styles['card__image']} src={posterUrlPreview} alt={nameRu} />
       <div className={styles['card__desc']}>
