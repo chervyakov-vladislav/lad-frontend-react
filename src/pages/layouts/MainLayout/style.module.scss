@@ -1,5 +1,8 @@
+$header-height: 70px;
+
 .wrapper {
   display: flex;
   flex-direction: column;
   gap: 50px;
+  min-height: calc(100vh - $header-height);
 }

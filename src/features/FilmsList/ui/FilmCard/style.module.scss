@@ -1,0 +1,41 @@
+.card {
+  align-items: center;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  height: 150px;
+  // justify-content: space-between;
+  padding: 13px 20px;
+  transition: .3s;
+  gap: 25px;
+
+  &:hover {
+    background: var(--blue_1);
+  }
+
+  &__count {
+    font-size: 16px;
+    font-weight: 700;
+    max-width: 40px;
+    text-align: center;
+    align-self: flex-start;
+  }
+
+  &__image {
+    border-radius: 5px;
+    height: 124px;
+    overflow: hidden;
+    object-fit: cover;
+    width: 85px;
+  }
+
+  &__desc {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__title {
+    
+  }
+}

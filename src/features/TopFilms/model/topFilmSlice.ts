@@ -5,13 +5,13 @@ import { ITopFilm } from '@/shared/types';
 
 import { fetchTopFilms } from './asyncActions';
 
-interface IUsers {
+interface IFilms {
   films_best: ITopFilm[];
   films_top: ITopFilm[];
   isLoading: boolean;
 }
 
-const initialState: IUsers = {
+const initialState: IFilms = {
   films_best: [],
   films_top: [],
   isLoading: false,
@@ -28,6 +28,9 @@ export const topFilmsSlice = createSlice({
       } else if (query === QUERY_TOP_FILMS.POPULAR100) {
         state.films_top = data;
       }
+      state.isLoading = false;
+    });
+    builder.addCase(fetchTopFilms.rejected, (state) => {
       state.isLoading = false;
     });
     builder.addCase(fetchTopFilms.pending, (state) => {

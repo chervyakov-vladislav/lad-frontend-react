@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '@/app/providers/storeProvider';
 import { IconTopFilms } from '@/shared/assets';
 import { TopFilmCard } from '@/entities';
 import { QUERY_TOP_FILMS } from '@/pages';
+import { setFilms } from '@/features/FilmsList/model/filmspageSlice';
 import { Spinner } from '@/shared/ui';
 
 import { fetchTopFilms } from './model/asyncActions';
@@ -27,6 +28,7 @@ export const TopFilms: React.FC<ITopFilms> = ({ title, query }) => {
   const data = query === QUERY_TOP_FILMS.BEST250 ? films_best : films_top;
 
   const handleNavigate = () => {
+    dispatch(setFilms({ films: data, query, title }));
     navigate('/films');
   };
 

@@ -3,11 +3,13 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 import searchbarSlice from '@/features/SearchBar/model/searchbarSlice';
 import topFilmSlice from '@/features/TopFilms/model/topFilmSlice';
+import filmspageSlice from '@/features/FilmsList/model/filmspageSlice';
 
 export const store = configureStore({
   reducer: {
     searchbar: searchbarSlice,
     topFilms: topFilmSlice,
+    filmspage: filmspageSlice,
   },
 });
 

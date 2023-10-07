@@ -2,13 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 import { KeyWordSearchInterface } from '@/shared/types';
 import { fetchFilmsSearchbar } from './asyncActions';
 
-interface IUsers {
+interface IFilms {
   films: KeyWordSearchInterface | null;
   isLoading: boolean;
   error: string;
 }
 
-const initialState: IUsers = {
+const initialState: IFilms = {
   films: null,
   isLoading: false,
   error: '',
