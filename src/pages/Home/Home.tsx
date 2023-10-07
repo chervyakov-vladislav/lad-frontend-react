@@ -14,9 +14,9 @@ enum TITLE {
 
 export const Home = () => {
   return (
-    <div className={classNames('container', styles.home)}>
+    <section className={classNames('container', styles.home)}>
       <TopFilms title={TITLE.POPULAR100} query={QUERY_TOP_FILMS.POPULAR100} />
       <TopFilms title={TITLE.BEST250} query={QUERY_TOP_FILMS.BEST250} />
-    </div>
+    </section>
   );
 };

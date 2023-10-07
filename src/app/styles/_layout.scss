@@ -23,6 +23,7 @@ body {
   color: var(--black_text);
   background: #fff;
   min-height: 100vh;
+  scrollbar-gutter: stable;
 }
 
 code,

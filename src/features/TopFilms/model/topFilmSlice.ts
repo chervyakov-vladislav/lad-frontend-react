@@ -8,23 +8,19 @@ import { fetchTopFilms } from './asyncActions';
 interface IUsers {
   films_best: ITopFilm[];
   films_top: ITopFilm[];
+  isLoading: boolean;
 }
 
 const initialState: IUsers = {
   films_best: [],
   films_top: [],
+  isLoading: false,
 };
 
 export const topFilmsSlice = createSlice({
   name: 'topFilms',
   initialState,
-  reducers: {
-    // resetSuggestionFilms(state) {
-    //   state.films = null;
-    //   state.isLoading = false;
-    //   state.error = '';
-    // },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchTopFilms.fulfilled, (state, { payload: { data, query } }) => {
       if (query === QUERY_TOP_FILMS.BEST250) {
@@ -32,6 +28,10 @@ export const topFilmsSlice = createSlice({
       } else if (query === QUERY_TOP_FILMS.POPULAR100) {
         state.films_top = data;
       }
+      state.isLoading = false;
+    });
+    builder.addCase(fetchTopFilms.pending, (state) => {
+      state.isLoading = true;
     });
   },
 });

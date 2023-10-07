@@ -7,6 +7,7 @@ import { TopFilmCard } from '@/entities';
 import { QUERY_TOP_FILMS } from '@/pages';
 
 import { fetchTopFilms } from './model/asyncActions';
+import { Spinner } from '../../shared/ui';
 
 interface ITopFilms {
   title: string;
@@ -15,7 +16,7 @@ interface ITopFilms {
 
 export const TopFilms: React.FC<ITopFilms> = ({ title, query }) => {
   const dispatch = useAppDispatch();
-  const { films_best, films_top } = useAppSelector((state) => state.topFilms);
+  const { films_best, films_top, isLoading } = useAppSelector((state) => state.topFilms);
 
   useEffect(() => {
     dispatch(fetchTopFilms(query));
@@ -30,17 +31,23 @@ export const TopFilms: React.FC<ITopFilms> = ({ title, query }) => {
         <IconTopFilms className={styles['top-films__icon']} />
       </header>
 
-      <ul className={styles['top-films__list']}>
-        {data.map((film, index) => {
-          if (index < 5) {
-            return (
-              <li key={film.filmId}>
-                <TopFilmCard {...film} />
-              </li>
-            );
-          }
-        })}
-      </ul>
+      {isLoading ? (
+        <div className={styles['top-films__loading']}>
+          <Spinner />
+        </div>
+      ) : (
+        <ul className={styles['top-films__list']}>
+          {data.map((film, index) => {
+            if (index < 7) {
+              return (
+                <li key={film.filmId}>
+                  <TopFilmCard {...film} />
+                </li>
+              );
+            }
+          })}
+        </ul>
+      )}
     </article>
   );
 };

@@ -1,0 +1,48 @@
+.top-film-card {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  color: var(--black);
+  font-size: 14px;
+  gap: 8px;
+
+  &:hover {
+    & > div::after {
+      opacity: 1;
+    }
+  }
+
+  &__img-container {
+    position: relative;
+    display: flex;
+
+    &::after {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      transition: .3s;
+      opacity: 0;
+      background-color: rgba($color: #000000, $alpha: .5);
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__img {
+    height: 210px;
+    width: 140px;
+    object-fit: cover;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--black);
+  }
+
+  &__desc {
+    display: flex;
+    gap: 3px;
+  }
+}

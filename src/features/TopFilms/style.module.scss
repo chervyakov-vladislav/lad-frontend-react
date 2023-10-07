@@ -8,16 +8,45 @@
       gap: 10px;
       align-items: center;
       cursor: pointer;
+      width: max-content;
+    }
+
+    &__title {
+      transition: .3s;
+    }
+
+    &__title:hover {
+      color: var(--black);
+      & ~ svg {
+        color: var(--black);
+      }
     }
 
     &__icon {
       width: 18px;
       height: 18px;
       margin-top: 5px;
+      transition: .3s;
+    
+      &:hover {
+        color: var(--black);
+        & ~ h2 {
+          color: var(--black);
+        }
+      }
     }
 
     &__list {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 140px);
+      gap: 20px;
+      justify-items: stretch;
+      align-items: stretch;
+    }
+
+    &__loading {
+      position: relative;
+      width: 100%;
+      height: 291px;
     }
 }
