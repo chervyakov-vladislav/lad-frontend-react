@@ -5,9 +5,10 @@ import { useAppDispatch, useAppSelector } from '@/app/providers/storeProvider';
 import { IconTopFilms } from '@/shared/assets';
 import { TopFilmCard } from '@/entities';
 import { QUERY_TOP_FILMS } from '@/pages';
+import { Spinner } from '@/shared/ui';
 
 import { fetchTopFilms } from './model/asyncActions';
-import { Spinner } from '../../shared/ui';
+import { useNavigate } from 'react-router-dom';
 
 interface ITopFilms {
   title: string;
@@ -15,18 +16,23 @@ interface ITopFilms {
 }
 
 export const TopFilms: React.FC<ITopFilms> = ({ title, query }) => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { films_best, films_top, isLoading } = useAppSelector((state) => state.topFilms);
 
   useEffect(() => {
-    dispatch(fetchTopFilms(query));
-  }, [dispatch, query]);
+    if (!films_best.length || !films_top.length) dispatch(fetchTopFilms(query));
+  }, []);
 
   const data = query === QUERY_TOP_FILMS.BEST250 ? films_best : films_top;
 
+  const handleNavigate = () => {
+    navigate('/films');
+  };
+
   return (
     <article className={styles['top-films']}>
-      <header className={styles['top-films__header']}>
+      <header onClick={handleNavigate} className={styles['top-films__header']}>
         <h2 className={styles['top-films__title']}>{title}</h2>
         <IconTopFilms className={styles['top-films__icon']} />
       </header>

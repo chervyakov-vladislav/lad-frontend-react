@@ -3,33 +3,33 @@ import styles from './styles.module.scss';
 import { useSuggestionList } from './lib';
 
 export const SuggestionList = () => {
-  const { films, ref, getGenresString } = useSuggestionList();
+  const { films, ref, getGenresString, handleNavigate } = useSuggestionList();
 
   return (
     <ul className={styles.suggestions} ref={ref}>
       {films &&
-        films?.map((film) => (
-          <li key={film.filmId} className={styles.suggestions__card}>
-            <img
-              className={styles.suggestions__image}
-              src={film.posterUrlPreview}
-              alt={film.nameEn}
-            />
+        films?.map(({ filmId, nameRu, posterUrlPreview, rating, genres }) => (
+          <li
+            key={filmId}
+            className={styles.suggestions__card}
+            onClick={() => handleNavigate(filmId)}
+          >
+            <img className={styles.suggestions__image} src={posterUrlPreview} alt={nameRu} />
             <div className={styles.suggestions__description}>
-              <h3 className={styles.suggestions__header}>{film.nameRu}</h3>
+              <h3 className={styles.suggestions__header}>{nameRu}</h3>
               <p className={styles.suggestions__string}>
-                {film.rating !== 'null' && (
+                {rating !== 'null' && (
                   <span
                     className={
-                      parseFloat(film.rating) <= 7.4
+                      parseFloat(rating) <= 7.4
                         ? styles.suggestions__rating
                         : styles.suggestions__green
                     }
                   >
-                    {film.rating}
+                    {rating}
                   </span>
                 )}
-                <span className={styles.suggestions__type}>{getGenresString(film.genres)}</span>
+                <span className={styles.suggestions__type}>{getGenresString(genres)}</span>
               </p>
             </div>
           </li>

@@ -4,6 +4,6 @@ import classNames from 'classnames';
 
 export const Input = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement>>(
   ({ className = '', ...props }, ref) => {
-    return <input ref={ref} className={classNames(styles['shared-input'], className)} {...props} />;
+    return <input ref={ref} className={classNames(className, styles['shared-input'])} {...props} />;
   }
 );

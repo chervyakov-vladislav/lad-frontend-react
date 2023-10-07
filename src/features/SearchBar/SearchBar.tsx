@@ -13,7 +13,7 @@ export const SearchBar = () => {
       <Input
         className={style.searchbar__input}
         type='text'
-        placeholder='Фильмы, сериалы, персоны'
+        placeholder='Фильмы, сериалы'
         value={searchValue}
         onChange={handleInput}
       />

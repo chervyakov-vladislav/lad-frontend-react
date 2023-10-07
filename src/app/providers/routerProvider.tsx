@@ -1,12 +1,14 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import { MainLayout, SomePage } from '@/pages';
+import { MainLayout } from '@/pages';
 
 import { Loadable } from '@/shared/ui';
 
 const importPageModule = (): Promise<{
   Home: React.ComponentType;
   NotFoundPage: React.ComponentType;
+  Films: React.ComponentType;
+  OneFilm: React.ComponentType;
 }> => import('@/pages');
 
 const Home = Loadable(
@@ -15,6 +17,14 @@ const Home = Loadable(
 
 const NotFoundPage = Loadable(
   React.lazy(() => importPageModule().then((module) => ({ default: module.NotFoundPage })))
+);
+
+const Films = Loadable(
+  React.lazy(() => importPageModule().then((module) => ({ default: module.Films })))
+);
+
+const OneFilm = Loadable(
+  React.lazy(() => importPageModule().then((module) => ({ default: module.OneFilm })))
 );
 
 export const router = createBrowserRouter([
@@ -29,11 +39,11 @@ export const router = createBrowserRouter([
       },
       {
         path: 'films',
-        element: <SomePage />,
+        element: <Films />,
       },
       {
-        path: 'somepage',
-        element: <SomePage />,
+        path: 'films/:filmId',
+        element: <OneFilm />,
       },
     ],
   },
