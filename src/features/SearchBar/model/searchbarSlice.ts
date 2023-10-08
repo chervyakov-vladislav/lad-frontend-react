@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { KeyWordSearchInterface } from '@/shared/types';
-import { fetchFilmsSearchbar } from './asyncActions';
+import { fetchFilmsSearchbar } from '@/shared/api';
 
 interface IFilms {
   films: KeyWordSearchInterface | null;

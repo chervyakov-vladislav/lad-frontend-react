@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/app/providers/storeProvider';
 import { useDebounce } from '@/shared/lib';
 
-import { fetchFilmsSearchbar } from '../model/asyncActions';
+import { fetchFilmsSearchbar } from '@/shared/api';
 
 export const useSearchBar = () => {
   const [searchValue, setSearchValue] = useState('');

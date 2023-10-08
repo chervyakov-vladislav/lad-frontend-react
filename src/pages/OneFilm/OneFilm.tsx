@@ -1,8 +1,12 @@
 import classNames from 'classnames';
-import { useParams } from 'react-router-dom';
 import styles from './styles.module.scss';
 
+import { OneFilmInfo } from '@/features';
+
 export const OneFilm = () => {
-  const { filmId } = useParams();
-  return <div className={classNames(styles['one-film'], 'container')}>{filmId}</div>;
+  return (
+    <div className={classNames(styles['one-film'], 'container')}>
+      <OneFilmInfo />
+    </div>
+  );
 };

@@ -38,3 +38,29 @@ export interface Genres {
 }
 
 export type ITopData = Omit<KeyWordSearchInterface, 'searchFilmsCountResult' | 'keyword'>;
+
+export interface IFilmData {
+  kinopoiskId: number;
+  countries: Countries[];
+  description: string;
+  coverUrl: string;
+  filmLength: string;
+  genres: [
+    {
+      genre: string;
+    },
+  ];
+  nameEn: string;
+  nameOriginal: string;
+  nameRu: string;
+  posterUrl: string;
+  posterUrlPreview: string;
+  ratingImdb: number;
+  ratingImdbVoteCount: number;
+  ratingKinopoisk: number;
+  ratingKinopoiskVoteCount: number;
+  shortDescription: string;
+  type: string;
+  link: string;
+  year: number;
+}
