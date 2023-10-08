@@ -13,4 +13,10 @@
     flex-direction: column;
     gap: 2px;
   }
+
+  &__button-load {
+    margin-bottom: 50px;
+    max-width: 250px;
+    height: 80px;
+  }
 }

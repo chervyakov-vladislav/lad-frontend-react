@@ -1,3 +1,18 @@
 .button {
-  
+  font-family: var(--font_mont);
+  color: #FFF;
+  padding: 30px 40px;
+  text-decoration: none;
+  background: var(--blue);
+  background-position: right 40px top 32px;
+  font-size: 18px;
+  display: inline-block;
+  font-weight: 700;
+  position: relative;
+  transition: .3s;
+
+  &:hover {
+    background-position: right 53px top 23px;
+    background-color: var(--darkblue_3)
+  }
 }

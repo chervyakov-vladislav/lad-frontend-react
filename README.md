@@ -1,5 +1,14 @@
 ### Поисковик фильмов
 
+#### Что реализовано
+
+- хедер с поисковой строкой, реализация поиска с debounce и возможностью прерывать соединение при новом запросе
+- верстка главной страницы с выводом рекомендаций и лушчих фильмов
+- при нажатии на заголовки списков вы можете перейти на страницу с полным списком фильмов
+- при нажатии на на карточку фильма, вы переходите на страницу фильма
+
+#### Как запустить
+
 - deploy https://comfy-semolina-749fd7.netlify.app/
 - api docs https://kinopoiskapiunofficial.tech/
 
@@ -9,7 +18,7 @@
    git clone https://github.com/chervyakov-vladislav/lad-frontend-react.git .
    npm i -> npm run dev
 ```
-### Используемые технологии
+#### Используемые технологии
 
 - Typescript
 - React
@@ -24,3 +33,4 @@
 - Custom hooks
 - adaptive layout
 - vite
+- eslint

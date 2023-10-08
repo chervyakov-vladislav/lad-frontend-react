@@ -6,18 +6,24 @@ import { QUERY_TOP_FILMS } from '@/pages';
 
 interface IResponse {
   data: ITopFilm[];
-  query: string;
+  query: QUERY_TOP_FILMS;
+  pagesCount: number;
 }
 
-export const fetchTopFilms = createAsyncThunk<IResponse, QUERY_TOP_FILMS>(
+interface IThunk {
+  query?: QUERY_TOP_FILMS;
+  page?: number;
+}
+
+export const fetchTopFilms = createAsyncThunk<IResponse, IThunk>(
   'topFilms/fetchTopFilms',
-  async (query, thunkAPI) => {
+  async ({ query = QUERY_TOP_FILMS.POPULAR100, page = 1 }, thunkAPI) => {
     try {
-      const page = '1';
       const { data } = await axios.get<ITopData>(`/v2.2/films/top?type=${query}&page=${page}`);
       return {
         data: data.films,
         query,
+        pagesCount: data.pagesCount,
       };
     } catch (e) {
       return thunkAPI.rejectWithValue('Не удалось загрузить фильмы');

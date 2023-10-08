@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 import { ITopFilm } from '@/shared/types';
-import { fetchFilms } from './acyncActions';
+import { fetchTopFilms } from '../../../shared/api';
 
 enum QUERY_TOP_FILMS {
   POPULAR100 = 'TOP_100_POPULAR_FILMS',
@@ -13,6 +13,7 @@ interface IPayload {
   films: ITopFilm[];
   title: string;
   query: QUERY_TOP_FILMS;
+  pagesCount: number;
 }
 
 interface IFilms {
@@ -20,7 +21,9 @@ interface IFilms {
   isLoading: boolean;
   title: string;
   query: QUERY_TOP_FILMS;
-  currentPage: 1;
+  currentPage: number;
+  totalPages: number;
+  isAdditionalLoading: boolean;
 }
 
 const initialState: IFilms = {
@@ -29,6 +32,8 @@ const initialState: IFilms = {
   title: 'Рекомендации',
   query: QUERY_TOP_FILMS.POPULAR100,
   currentPage: 1,
+  totalPages: 2,
+  isAdditionalLoading: false,
 };
 
 export const filmspageSlice = createSlice({
@@ -39,22 +44,23 @@ export const filmspageSlice = createSlice({
       state.films = payload.films;
       state.title = payload.title;
       state.query = payload.query;
+      state.totalPages = payload.pagesCount;
       state.currentPage = 1;
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchFilms.fulfilled, (state, action) => {
-      state.films = action.payload.data;
-      state.title = 'Рекомендации';
-      state.query = QUERY_TOP_FILMS.POPULAR100;
-      state.isLoading = false;
-      state.currentPage = 1;
+    builder.addCase(fetchTopFilms.fulfilled, (state, action) => {
+      state.films = [...state.films, ...action.payload.data];
+      state.query = action.payload.query;
+      state.isAdditionalLoading = false;
+      state.currentPage += 1;
+      state.totalPages = action.payload.pagesCount;
     });
-    builder.addCase(fetchFilms.rejected, (state) => {
-      state.isLoading = false;
+    builder.addCase(fetchTopFilms.rejected, (state) => {
+      state.isAdditionalLoading = false;
     });
-    builder.addCase(fetchFilms.pending, (state) => {
-      state.isLoading = true;
+    builder.addCase(fetchTopFilms.pending, (state) => {
+      state.isAdditionalLoading = false;
     });
   },
 });

@@ -1,23 +1,39 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { useAppDispatch, useAppSelector } from '@/app/providers/storeProvider';
-
-import { fetchFilms } from '../model/acyncActions';
+import { fetchTopFilms } from '@/shared/api';
+import { useUpdateEffect, useIntersectionObserver } from '@/shared/lib';
 
 export const useFilmsList = () => {
   const dispatch = useAppDispatch();
-  const { isLoading, films, title, currentPage } = useAppSelector((state) => state.filmspage);
+  const { films, title, currentPage, isAdditionalLoading, query, totalPages } = useAppSelector(
+    (state) => state.filmspage
+  );
+
+  const ref = useRef<HTMLButtonElement | null>(null);
+  const entry = useIntersectionObserver(ref, {});
+  const isVisible = Boolean(entry?.isIntersecting);
+
+  console.log(isVisible);
+
+  useUpdateEffect(() => {
+    if (currentPage < totalPages && !isAdditionalLoading && films.length > 0) {
+      dispatch(fetchTopFilms({ query, page: currentPage + 1 }));
+    }
+  }, [isVisible]);
 
   useEffect(() => {
     if (!films.length) {
-      dispatch(fetchFilms());
+      dispatch(fetchTopFilms({}));
     }
-  }, [dispatch, fetchFilms]);
+  }, [dispatch]);
 
   return {
     films,
     title,
-    isLoading,
+    isAdditionalLoading,
+    ref,
+    totalPages,
     currentPage,
   };
 };

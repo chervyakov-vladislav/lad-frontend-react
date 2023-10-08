@@ -9,7 +9,7 @@ export type JSONAny = JSONPrimitive | JSONObject | JSONArray;
 export interface KeyWordSearchInterface {
   films: ITopFilm[];
   keyword: string;
-  pageCount: number;
+  pagesCount: number;
   searchFilmsCountResult: number;
 }
 
