@@ -14,10 +14,8 @@ export const useFilmsList = () => {
   const entry = useIntersectionObserver(ref, {});
   const isVisible = Boolean(entry?.isIntersecting);
 
-  console.log(isVisible);
-
   useUpdateEffect(() => {
-    if (currentPage < totalPages && !isAdditionalLoading && films.length > 0) {
+    if (currentPage < totalPages && films.length && isVisible === true) {
       dispatch(fetchTopFilms({ query, page: currentPage + 1 }));
     }
   }, [isVisible]);
