@@ -1,4 +1,4 @@
-import { Countries, Genres } from '@/shared/types/index';
+import { Countries, Genres, IFilmData } from '@/shared/types/index';
 
 export function getEngnameYearTotalTime(nameEn = '', year = '', filmLength = '') {
   const result: string[] = [];
@@ -59,6 +59,7 @@ export function isNameRU(nameRu: string, nameEn: string) {
 }
 
 export function getGenres(genres: Genres[]) {
+  if (!genres) return;
   if (genres.length === 1) return genres[0].genre;
   if (genres.length === 0) return '';
   const result = genres.map((item) => item.genre);
@@ -69,3 +70,28 @@ export function getRating(rating: string) {
   if (Number.isNaN(rating)) return '0';
   return rating === 'null' ? '0' : rating;
 }
+
+export function getYear(year: number) {
+  if (year) {
+    return year === null ? '-' : year;
+  }
+}
+
+export function getCountry(data: IFilmData) {
+  if (!data) return;
+  if (data.countries.length === 1) return data.countries[0].country;
+  if (data.countries.length === 0) return '';
+  const result = data.countries.map((item) => item.country);
+  return result.join(', ');
+}
+
+// export function getStaff(data: IStaff[], prof: string) {
+//   const staff = data
+//     .filter((item) => item.professionKey === prof)
+//     .map((item) => {
+//       return item.nameRu;
+//     });
+//   if (staff.length === 0) return '';
+//   if (staff.length === 1) return staff[0];
+//   return staff.join(', ');
+// }

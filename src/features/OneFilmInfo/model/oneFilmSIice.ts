@@ -17,7 +17,11 @@ const initialState: IFilms = {
 export const oneFilmSlice = createSlice({
   name: 'onefilm',
   initialState,
-  reducers: {},
+  reducers: {
+    clearData(state) {
+      state.film = null;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchOneFilm.fulfilled, (state, action) => {
       state.film = action.payload;
@@ -34,4 +38,5 @@ export const oneFilmSlice = createSlice({
   },
 });
 
+export const { clearData } = oneFilmSlice.actions;
 export default oneFilmSlice.reducer;

@@ -1,0 +1,52 @@
+.one-film {
+  display: flex;
+  gap: 30px;
+
+  @media (max-width: 750px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__image {
+    max-width: 360px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__title {
+    font-size: 40px;
+    color: var(--black);
+    font-family: var(--font_mont);
+    font-weight: 700;
+    line-height: 48px;
+    text-align: left;
+  }
+
+  &__info-table {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__subtitle {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--black_text);
+    font-family: var(--font_mont);
+    line-height: 30px;
+    margin-bottom: 15px;
+    text-align: left;
+  }
+
+  &__data {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

@@ -5,8 +5,8 @@ import { OneFilmInfo } from '@/features';
 
 export const OneFilm = () => {
   return (
-    <div className={classNames(styles['one-film'], 'container')}>
+    <section className={classNames(styles['one-film'], 'container')}>
       <OneFilmInfo />
-    </div>
+    </section>
   );
 };

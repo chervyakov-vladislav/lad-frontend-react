@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/app/providers/storeProvider';
 import { fetchOneFilm } from '@/shared/api/fetchOneFilm';
 
+import { clearData } from '../model/oneFilmSIice';
+
 export const useOneFilm = () => {
   const { filmId } = useParams();
   const dispatch = useAppDispatch();
@@ -12,6 +14,10 @@ export const useOneFilm = () => {
 
   useEffect(() => {
     dispatch(fetchOneFilm(filmId ?? '1'));
+
+    return () => {
+      dispatch(clearData());
+    };
   }, [filmId]);
 
   return {
