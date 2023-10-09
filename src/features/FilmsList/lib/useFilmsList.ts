@@ -15,7 +15,7 @@ export const useFilmsList = () => {
   const isVisible = Boolean(entry?.isIntersecting);
 
   useUpdateEffect(() => {
-    if (currentPage < totalPages && films.length && isVisible === true) {
+    if (currentPage < totalPages && films.length && isVisible === true && !isAdditionalLoading) {
       dispatch(fetchTopFilms({ query, page: currentPage + 1 }));
     }
   }, [isVisible]);
@@ -26,6 +26,10 @@ export const useFilmsList = () => {
     }
   }, [dispatch]);
 
+  const handleClick = () => {
+    dispatch(fetchTopFilms({ query, page: currentPage + 1 }));
+  };
+
   return {
     films,
     title,
@@ -33,5 +37,6 @@ export const useFilmsList = () => {
     ref,
     totalPages,
     currentPage,
+    handleClick,
   };
 };

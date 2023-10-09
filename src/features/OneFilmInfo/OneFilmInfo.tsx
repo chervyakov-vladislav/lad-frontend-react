@@ -1,14 +1,17 @@
 import styles from './style.module.scss';
 
 import { getYear } from '@/shared/utils';
+import { Spinner } from '@/shared/ui';
 
 import { useOneFilm } from './lib/useOneFilm';
 import { DataElement } from './ui';
 
 export const OneFilmInfo = () => {
-  const { film } = useOneFilm();
+  const { film, isLoading } = useOneFilm();
 
-  return (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <article className={styles['one-film']}>
       <img className={styles['one-film__image']} src={film?.posterUrlPreview} alt={film?.nameRu} />
       <div className={styles['one-film__main']}>

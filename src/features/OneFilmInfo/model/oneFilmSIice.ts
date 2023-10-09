@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { IFilmData } from '@/shared/types';
-import { fetchOneFilm } from '../../../shared/api/fetchOneFilm';
+import { fetchOneFilm } from '@/shared/api/fetchOneFilm';
 
 interface IFilms {
   film: IFilmData | null;
@@ -30,10 +30,11 @@ export const oneFilmSlice = createSlice({
     });
     builder.addCase(fetchOneFilm.rejected, (state, action) => {
       state.isLoading = false;
-      state.error = action.payload as string;
+      state.error = action.payload || 'Произошла ошибка при загрузке фильма';
     });
     builder.addCase(fetchOneFilm.pending, (state) => {
       state.isLoading = true;
+      state.error = '';
     });
   },
 });
