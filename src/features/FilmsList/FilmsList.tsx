@@ -6,7 +6,8 @@ import { useFilmsList } from './lib/useFilmsList';
 import { FilmCard } from './ui';
 
 export const FilmsList = () => {
-  const { films, title, isAdditionalLoading, ref, totalPages, currentPage } = useFilmsList();
+  const { films, title, isAdditionalLoading, ref, totalPages, currentPage, handleClick } =
+    useFilmsList();
 
   return (
     <section className={styles['film-list']}>
@@ -20,6 +21,7 @@ export const FilmsList = () => {
       </ul>
       {totalPages !== currentPage && films.length && (
         <Button
+          onClick={handleClick}
           classes={styles['film-list__button-load']}
           isLoading={isAdditionalLoading}
           ref={ref}
