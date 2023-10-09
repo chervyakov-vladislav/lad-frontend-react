@@ -7,18 +7,19 @@ interface IThunk {
   signal?: AbortSignal;
 }
 
-export const fetchFilmsSearchbar = createAsyncThunk<KeyWordSearchInterface, IThunk>(
-  'searchbar/fetchSearchbar',
-  async ({ searchValue, signal }, thunkAPI) => {
-    try {
-      const page = '1';
-      const { data } = await axios.get(
-        `/v2.1/films/search-by-keyword?keyword=${searchValue}&page=${page}`,
-        { signal }
-      );
-      return data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue('Не удалось загрузить фильмы');
-    }
+export const fetchFilmsSearchbar = createAsyncThunk<
+  KeyWordSearchInterface,
+  IThunk,
+  { rejectValue: string }
+>('searchbar/fetchSearchbar', async ({ searchValue, signal }, thunkAPI) => {
+  try {
+    const page = '1';
+    const { data } = await axios.get(
+      `/v2.1/films/search-by-keyword?keyword=${searchValue}&page=${page}`,
+      { signal }
+    );
+    return data;
+  } catch (e) {
+    return thunkAPI.rejectWithValue('Не удалось загрузить фильмы');
   }
-);
+});

@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 import { ITopFilm } from '@/shared/types';
-import { fetchTopFilms } from '../../../shared/api';
+import { fetchTopFilms } from '@/shared/api';
 
 enum QUERY_TOP_FILMS {
   POPULAR100 = 'TOP_100_POPULAR_FILMS',
@@ -60,7 +60,7 @@ export const filmspageSlice = createSlice({
       state.isAdditionalLoading = false;
     });
     builder.addCase(fetchTopFilms.pending, (state) => {
-      state.isAdditionalLoading = false;
+      state.isAdditionalLoading = true;
     });
   },
 });

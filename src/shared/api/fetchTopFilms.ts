@@ -15,7 +15,7 @@ interface IThunk {
   page?: number;
 }
 
-export const fetchTopFilms = createAsyncThunk<IResponse, IThunk>(
+export const fetchTopFilms = createAsyncThunk<IResponse, IThunk, { rejectValue: string }>(
   'topFilms/fetchTopFilms',
   async ({ query = QUERY_TOP_FILMS.POPULAR100, page = 1 }, thunkAPI) => {
     try {
