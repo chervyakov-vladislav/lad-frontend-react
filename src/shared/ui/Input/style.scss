@@ -12,15 +12,6 @@
   outline: none;
   border-radius: 8px;
   transition: .3s;
-  
-  &::-webkit-input-placeholder {
-    color: var(--blue_1);
-  }
-
-  &:focus {
-    background-color: var(--blue_1);
-    color: var(--black_text);
-  }
 
   &:focus::-webkit-input-placeholder {
     color: transparent;

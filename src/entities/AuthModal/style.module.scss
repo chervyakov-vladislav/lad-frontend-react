@@ -1,0 +1,13 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input {
+  border: 0.0625rem solid var(--lightgray_2);
+
+  &:focus {
+    border-color: var(--blue);
+  }
+}
