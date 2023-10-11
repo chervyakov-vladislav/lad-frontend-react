@@ -1,13 +1,98 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-}
+  gap: 15px;
 
-.input {
-  border: 0.0625rem solid var(--lightgray_2);
+  &__header {
+    display: flex;
+    gap: 5px;
+    font-size: 14px;
+    justify-content: center;
+    margin-top: 10px;
 
-  &:focus {
-    border-color: var(--blue);
+    & > button {
+      color: var(--blue);
+      transition: .3s;
+
+      &:hover {
+        color: var(--blue_4);
+      }
+    }
+  }
+
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+
+    & > span {
+      font-size: 14px;
+      display: flex;
+      gap: 1px;
+
+      & > span {
+        color: var(--red)
+      }
+    } 
+
+    &  input {
+      border: 0.0625rem solid var(--lightgray_2);
+      border-radius: 6px;
+
+      &:focus {
+        border-color: var(--blue);
+      }
+    }
+
+    &--input-container {
+      display: flex;
+      position: relative;
+    }
+
+    
+    &--icon-container {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      translate: 0 -50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      aspect-ratio: 1/1;
+    }
+
+    &--icon {
+      color: var(--gray);
+
+      & path {
+        transition: .3s;
+      }
+
+      &:hover {
+        color: var(--blue);
+      }
+    }
+  }
+
+  &__button-container {
+    display: flex;
+    justify-content: flex-end;
+
+    & > button {
+      font-size: 16px;
+      padding: 15px 30px;
+
+      &:hover {
+        background-color: var(--blue_4);
+      }
+    }
   }
 }
