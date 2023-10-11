@@ -6,13 +6,19 @@ import { IconShowPassword, IconHidePassword } from '@/shared/assets';
 import { useAuthModal } from './lib/useAuthModal';
 
 export const AuthModal = () => {
-  const { handleSubmit, handleShowPassword, isPasswordVisible } = useAuthModal();
+  const {
+    isRegistration,
+    isPasswordVisible,
+    handleSubmit,
+    handleShowPassword,
+    handleChangeModalState,
+  } = useAuthModal();
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <div className={styles['form__header']}>
-        <div>Нет аккаунта?</div>
-        <button>Создать</button>
+        <div>{isRegistration ? 'Уже есть аккаунт?' : 'Нет аккаунта?'}</div>
+        <button onClick={handleChangeModalState}>{isRegistration ? 'Войти' : 'Создать'}</button>
       </div>
 
       <div className={styles['form__inputs']}>
@@ -38,10 +44,19 @@ export const AuthModal = () => {
             </div>
           </div>
         </label>
+
+        {isRegistration && (
+          <label className={styles['form__label']}>
+            <span>
+              Подтвердите пароль <span>*</span>
+            </span>
+            <Input type={isPasswordVisible ? 'text' : 'password'} />
+          </label>
+        )}
       </div>
 
       <div className={styles['form__button-container']}>
-        <Button>Войти</Button>
+        <Button>{isRegistration ? 'Зарегистрироваться' : 'Войти'}</Button>
       </div>
     </form>
   );
