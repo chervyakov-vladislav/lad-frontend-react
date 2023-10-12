@@ -2,7 +2,7 @@ import style from './style.module.scss';
 
 import { IconLogin } from '@/shared/assets';
 import { Modal } from '@/shared/ui';
-import { AuthModal } from '@/entities/AuthModal';
+import { AuthModal } from '@/features/AuthModal';
 
 import { useLoginButton } from './lib';
 
@@ -15,7 +15,6 @@ export const LoginButton = () => {
       </button>
       {showModal && (
         <Modal handleClose={handleCloseModal} headerTitle='Вход'>
-          <div className={style.desc}>тут будет авторизация и регистрация, если я успею</div>
           <AuthModal />
         </Modal>
       )}
