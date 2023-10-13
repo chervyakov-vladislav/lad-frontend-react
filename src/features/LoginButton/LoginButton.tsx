@@ -7,8 +7,11 @@ import { AuthModal } from '@/features/AuthModal';
 import { useLoginButton } from './lib';
 
 export const LoginButton = () => {
-  const { handleCloseModal, showModal, handleClick } = useLoginButton();
-  return (
+  const { handleCloseModal, showModal, handleClick, isAuth, handleExit } = useLoginButton();
+
+  return isAuth ? (
+    <div onClick={handleExit}>вы авторизованы</div>
+  ) : (
     <>
       <button onClick={handleClick} className={style.login}>
         <IconLogin className={style.login__icon} />
