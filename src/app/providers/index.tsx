@@ -3,6 +3,7 @@ import 'normalize.css';
 import '../styles/index.scss';
 import { RouterProvider } from 'react-router-dom';
 import { Provider as StoreProvider } from 'react-redux';
+import '@/shared/configs/firebase';
 
 import { router } from './routerProvider';
 import { store } from './storeProvider';

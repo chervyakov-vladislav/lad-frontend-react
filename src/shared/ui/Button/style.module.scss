@@ -10,6 +10,8 @@
   font-weight: 700;
   position: relative;
   transition: .3s;
+  border-radius: 8px;
+  overflow: hidden;
 
   &:hover {
     background-position: right 53px top 23px;
