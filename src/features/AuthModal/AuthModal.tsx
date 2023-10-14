@@ -5,21 +5,27 @@ import { IconShowPassword, IconHidePassword } from '@/shared/assets';
 
 import { useAuthModal } from './lib/useAuthModal';
 
-export const AuthModal = () => {
+interface IProps {
+  handleCloseModal: () => void;
+}
+
+export const AuthModal: React.FC<IProps> = ({ handleCloseModal }) => {
   const {
     confirmPassword,
+    error,
     email,
     password,
     isRegistration,
     isPasswordVisible,
+    isLoading,
     handleShowPassword,
     handleChangeModalState,
-    setConfirmPassword,
-    setEmail,
-    setPassword,
+    handleInputConfirmPassword,
+    handleInputEmail,
+    handleInputPassword,
     handleRegistration,
     handleLogin,
-  } = useAuthModal();
+  } = useAuthModal(handleCloseModal);
 
   return (
     <form
@@ -35,12 +41,14 @@ export const AuthModal = () => {
         <button onClick={handleChangeModalState}>{isRegistration ? 'Войти' : 'Создать'}</button>
       </div>
 
+      {error && error.length && <div className={styles['form__error']}>{error}</div>}
+
       <div className={styles['form__inputs']}>
         <label className={styles['form__label']}>
           <span>
             Почта <span>*</span>
           </span>
-          <Input type='text' value={email} onChange={(e) => setEmail(e.target.value)} />
+          <Input type='text' value={email} onChange={handleInputEmail} />
         </label>
 
         <label className={styles['form__label']}>
@@ -51,7 +59,7 @@ export const AuthModal = () => {
             <Input
               type={isPasswordVisible ? 'text' : 'password'}
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handleInputPassword}
             />
             <div onClick={handleShowPassword} className={styles['form__label--icon-container']}>
               {isPasswordVisible ? (
@@ -71,14 +79,19 @@ export const AuthModal = () => {
             <Input
               type={isPasswordVisible ? 'text' : 'password'}
               value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              onChange={handleInputConfirmPassword}
             />
           </label>
         )}
       </div>
 
       <div className={styles['form__button-container']}>
-        <Button>{isRegistration ? 'Зарегистрироваться' : 'Войти'}</Button>
+        <Button
+          isLoading={isLoading}
+          classes={isRegistration ? styles['form__button-load-reg'] : styles['form__button-load']}
+        >
+          {isRegistration ? 'Зарегистрироваться' : 'Войти'}
+        </Button>
       </div>
     </form>
   );

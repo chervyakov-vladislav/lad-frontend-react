@@ -6,7 +6,7 @@ import { removeUser } from '@/widgets/Header/model/userSlice';
 
 export const useLoginButton = () => {
   const dispatch = useAppDispatch();
-  const { isAuth } = useAuth();
+  const { isAuth, email } = useAuth();
   const { handleCloseModal, openModal, showModal } = useModal();
 
   const handleClick = useCallback((event: React.MouseEvent<HTMLElement, Event>) => {
@@ -23,5 +23,6 @@ export const useLoginButton = () => {
     handleExit,
     showModal,
     isAuth,
+    email,
   };
 };

@@ -20,6 +20,11 @@
     }
   }
 
+  &__error {
+    font-size: 14px;
+    color: var(--red)
+  }
+
   &__inputs {
     display: flex;
     flex-direction: column;
@@ -95,4 +100,15 @@
       }
     }
   }
+
+  &__button-load {
+    height: 48px;
+    width: 112px;
+  }
+
+  &__button-load-reg {
+    height: 48px;
+    width: 232px;
+  }
+  
 }

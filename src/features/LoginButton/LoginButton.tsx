@@ -7,10 +7,12 @@ import { AuthModal } from '@/features/AuthModal';
 import { useLoginButton } from './lib';
 
 export const LoginButton = () => {
-  const { handleCloseModal, showModal, handleClick, isAuth, handleExit } = useLoginButton();
+  const { handleCloseModal, showModal, handleClick, isAuth, handleExit, email } = useLoginButton();
 
   return isAuth ? (
-    <div onClick={handleExit}>вы авторизованы</div>
+    <div onClick={handleExit} className={style.user}>
+      Выйти из {email}
+    </div>
   ) : (
     <>
       <button onClick={handleClick} className={style.login}>
@@ -18,7 +20,7 @@ export const LoginButton = () => {
       </button>
       {showModal && (
         <Modal handleClose={handleCloseModal} headerTitle='Вход'>
-          <AuthModal />
+          <AuthModal handleCloseModal={handleCloseModal} />
         </Modal>
       )}
     </>
