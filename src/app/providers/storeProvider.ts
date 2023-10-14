@@ -5,6 +5,7 @@ import searchbarSlice from '@/features/SearchBar/model/searchbarSlice';
 import topFilmSlice from '@/features/TopFilms/model/topFilmSlice';
 import filmspageSlice from '@/features/FilmsList/model/filmspageSlice';
 import oneFilmSlice from '@/features/OneFilmInfo/model/oneFilmSIice';
+import userSlice from '@/widgets/Header/model/userSlice';
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     topFilms: topFilmSlice,
     filmspage: filmspageSlice,
     onefilm: oneFilmSlice,
+    user: userSlice,
   },
 });
 

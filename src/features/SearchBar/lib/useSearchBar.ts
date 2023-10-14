@@ -18,7 +18,7 @@ export const useSearchBar = () => {
     setSearchValue(value);
   }, []);
 
-  const handleSearch = () => {
+  const handleSearch = useCallback(() => {
     const abortController = new AbortController();
     const fetchParams = {
       searchValue: debouncedValue,
@@ -39,7 +39,7 @@ export const useSearchBar = () => {
         abort();
       }
     }
-  };
+  }, []);
 
   useEffect(() => {
     const abortController = new AbortController();

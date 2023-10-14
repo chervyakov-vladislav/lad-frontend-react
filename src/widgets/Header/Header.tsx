@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { SearchBar } from '@/features';
-import { LoginButton } from '@/entities';
+import { LoginButton } from '@/features';
 
 export const Header = () => {
   return (

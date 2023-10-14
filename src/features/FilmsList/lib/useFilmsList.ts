@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 import { useAppDispatch, useAppSelector } from '@/app/providers/storeProvider';
 import { fetchTopFilms } from '@/shared/api';
@@ -26,9 +26,9 @@ export const useFilmsList = () => {
     }
   }, [dispatch]);
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     dispatch(fetchTopFilms({ query, page: currentPage + 1 }));
-  };
+  }, []);
 
   return {
     films,
